@@ -24,6 +24,7 @@ public class StoryActivity extends ActionBarActivity {
     private TextView mTextView;
     private Button mChoice1;
     private Button mChoice2;
+    private String mName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,27 +32,32 @@ public class StoryActivity extends ActionBarActivity {
         setContentView(R.layout.activity_story);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra(getString(R.string.key_name));
+        mName = intent.getStringExtra(getString(R.string.key_name));
 
         mImageView = (ImageView) findViewById(R.id.storyImageView);
         mTextView = (TextView) findViewById(R.id.storyTextView);
         mChoice1 = (Button) findViewById(R.id.choiceButton1);
         mChoice2 = (Button) findViewById(R.id.choiceButton2);
 
-        if(name == null){
-            name = "Friend";
+        if(mName == null){
+            mName = "Friend";
         }
 
-        Log.d(TAG,name);
+        loadPage();
 
+        Log.d(TAG,mName);
 
     }
+    
     private void loadPage(){
         Page page = mStory.getPage(0);
         Drawable drawable = getResources().getDrawable(page.getImageId());
         mImageView.setImageDrawable(drawable);
 
-        mTextView.setText(page.getText());
+        String pageText = page.getText();
+        pageText = String.format(pageText,mName);
+
+        mTextView.setText(pageText);
         mChoice1.setText(page.getChoice1().getText());
         mChoice2.setText(page.getChoice2().getText());
     }
