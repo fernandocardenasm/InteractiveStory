@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.usuario.interactivestory.R;
+import com.example.usuario.interactivestory.model.Page;
 
 
 public class StoryActivity extends ActionBarActivity {
+
 
     public static final String TAG = StoryActivity.class.getSimpleName();
 
@@ -25,6 +27,8 @@ public class StoryActivity extends ActionBarActivity {
         }
 
         Log.d(TAG,name);
+
+
     }
 
 }
