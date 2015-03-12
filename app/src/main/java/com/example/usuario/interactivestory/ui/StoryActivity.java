@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class StoryActivity extends ActionBarActivity {
     private Button mChoice1;
     private Button mChoice2;
     private String mName;
+    private Page mCurrentPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +45,38 @@ public class StoryActivity extends ActionBarActivity {
             mName = "Friend";
         }
 
-        loadPage();
+        loadPage(0);
 
         Log.d(TAG,mName);
 
     }
-    
-    private void loadPage(){
-        Page page = mStory.getPage(0);
-        Drawable drawable = getResources().getDrawable(page.getImageId());
+
+    private void loadPage(int choice){
+        mCurrentPage = mStory.getPage(choice);
+        Drawable drawable = getResources().getDrawable(mCurrentPage.getImageId());
         mImageView.setImageDrawable(drawable);
 
-        String pageText = page.getText();
+        String pageText = mCurrentPage.getText();
         pageText = String.format(pageText,mName);
 
         mTextView.setText(pageText);
-        mChoice1.setText(page.getChoice1().getText());
-        mChoice2.setText(page.getChoice2().getText());
+        mChoice1.setText(mCurrentPage.getChoice1().getText());
+        mChoice2.setText(mCurrentPage.getChoice2().getText());
+
+        mChoice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nextPage = mCurrentPage.getChoice1().getNextPage();
+                loadPage(nextPage);
+            }
+        });
+        mChoice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nextPage = mCurrentPage.getChoice2().getNextPage();
+                loadPage(nextPage);
+            }
+        });
     }
 
 }
