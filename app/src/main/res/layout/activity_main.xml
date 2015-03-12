@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity">
+    android:layout_height="match_parent" tools:context=".MainActivity"
+    android:background="@android:color/white">
 
     <ImageView
         android:layout_width="match_parent"
@@ -21,7 +22,9 @@
         android:id="@+id/startButton"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/titleImageView"
-        android:layout_alignStart="@+id/titleImageView" />
+        android:layout_alignStart="@+id/titleImageView"
+        android:background="@android:color/white"
+        android:textColor="#ff3a8aec" />
 
     <EditText
         android:layout_width="match_parent"
@@ -33,6 +36,7 @@
         android:layout_alignLeft="@+id/startButton"
         android:layout_alignStart="@+id/startButton"
         android:hint="Your name to begin"
-        android:maxLength="30" />
+        android:maxLength="30"
+        android:background="@android:color/white" />
 
 </RelativeLayout>
