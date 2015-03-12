@@ -1,5 +1,6 @@
 package com.example.usuario.interactivestory;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,10 +32,17 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String name = mNameField.getText().toString();
-                Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, name, Toast.LENGTH_LONG).show();
+
+                startStory();
             }
         });
 
+    }
+
+    private void startStory(){
+        Intent intent = new Intent(this, StoryActivity.class);
+        startActivity(intent);
     }
 
 }
