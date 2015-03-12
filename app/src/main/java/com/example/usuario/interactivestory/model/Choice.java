@@ -12,4 +12,11 @@ public class Choice {
         mNextPage = nextPage;
     }
 
+    public String getText() {
+        return mText;
+    }
+
+    public int getNextPage() {
+        return mNextPage;
+    }
 }
