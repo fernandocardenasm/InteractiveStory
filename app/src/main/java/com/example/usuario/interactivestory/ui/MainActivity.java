@@ -45,4 +45,11 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+
+    //In case you want to reset the name
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNameField.setText("");
+    }
 }
